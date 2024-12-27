@@ -1,0 +1,151 @@
+.App {
+  text-align: center;
+  background-color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.home {
+  width: 10dvw;
+}
+
+.cont{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+p{
+  color:  rgb(112, 76, 182);
+  font-family: Inter;
+  font-size: 60px;
+  margin-bottom: 3dvh;
+}
+
+h1{
+  color:  rgb(112, 76, 182);
+  font-family: Inter;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 3dvh;
+}
+
+h2{
+  color:  rgb(112, 76, 182);
+  font-family: Inter;
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 3dvh;
+}
+
+
+label {
+  color:  rgb(112, 76, 182);
+  font-family: Inter;
+  font-size: 20px;
+  margin-bottom: 3dvh;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  p {
+    animation: diagonalMove infinite 5s ease-in-out;
+  }
+}
+
+@keyframes diagonalMove {
+  0% {
+    transform: translateY(0);
+  } 
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+button{
+  color: #FFFFFF;
+  background-color: rgb(112, 76, 182);
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  font-family: Inter;
+  margin: 1.5dvh;
+  padding: 1dvh;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.buttons-home{
+ display: flex;
+ flex-direction: row;
+}
+
+button:hover {
+  box-shadow: 0 0 10px rgba(112, 76, 182, 0.5);
+  transform: translateY(-1px);
+}
+
+button:active {
+  box-shadow: 0 0 10px rgba(112, 76, 182, 0.5);
+  transform: translateY(0);
+}
+
+input[type="file"], input[type="text"] {
+  font-family: Inter;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #704cb6;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #704cb6;
+  outline: none;
+  margin: 10px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+input[type="text"]::placeholder{
+  color: #704cb6;
+}
+
+input[type="file"] {
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type="file"]:hover::before {
+  background-color: rgb(130, 90, 200);
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  column-count: 2;
+  column-gap: 10dvw;
+}
+
+li {
+  color: rgb(112, 76, 182);
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  margin-bottom: 1.5vh;
+  transition: color 0.3s ease;
+}
+
+li:hover {
+  color: rgb(130, 90, 200);
+}
