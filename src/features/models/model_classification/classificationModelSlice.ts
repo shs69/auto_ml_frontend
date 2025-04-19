@@ -13,8 +13,8 @@ export const classificationModelSlice = createSlice({
     name: 'ClassificationModel',
     initialState,
     reducers: {
-        reset: (state) => {state.trained = false;state.choosed = false},
-        resetClassification: (state) => {state.trained = false; state.choosed = false},
+        resetTrained: (state) => {state.trained = false},
+        resetClassification: (state) => {state.choosed = false},
         changeTargetColumn: (state, action: PayloadAction<string>) => {state.targetColumn = action.payload},
         chooseClassification: (state) => {state.choosed = true}
     },
@@ -26,4 +26,4 @@ export const classificationModelSlice = createSlice({
       })
 })
 
-export const { reset, resetClassification, changeTargetColumn, chooseClassification } = classificationModelSlice.actions;
+export const { resetTrained, resetClassification, changeTargetColumn, chooseClassification } = classificationModelSlice.actions;

@@ -13,8 +13,8 @@ export const regressionModelSlice = createSlice({
     name: 'RegressionModel',
     initialState,
     reducers: {
-        reset: (state) => {state.trained = false;state.choosed = false},
-        resetRegression: (state) => {state.trained = false;state.choosed = false},
+        resetTrained: (state) => {state.trained = false},
+        resetRegression: (state) => {state.choosed = false},
         changeTargetColumn: (state, action: PayloadAction<string>) => {state.targetColumn = action.payload},
         chooseRegression: (state) => {state.choosed = true}
     },
@@ -26,4 +26,4 @@ export const regressionModelSlice = createSlice({
       })
 })
 
-export const { resetRegression, changeTargetColumn, chooseRegression } = regressionModelSlice.actions;
+export const { resetTrained, resetRegression, changeTargetColumn, chooseRegression } = regressionModelSlice.actions;

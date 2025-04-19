@@ -2,12 +2,12 @@ export interface modelParams {
     file: File;
     targetColumn?: string;
     url: URL;
-  }
+}
   
 export interface modelResponse {
     message: string;
     predictions: number[];
-  }
+}
 
 export interface FileState {
     isLoading: boolean;
@@ -15,7 +15,7 @@ export interface FileState {
     message: string | null;
     loaded: boolean;
     prediction?: number[];
-  }
+}
 
 export interface ClassificationModel{
     trained: boolean;

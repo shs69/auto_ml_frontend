@@ -21,6 +21,10 @@
   font-weight: 500;
 }
 
+.row{
+  display: flex;
+}
+
 p{
   color:  rgb(112, 76, 182);
   font-family: Inter;
