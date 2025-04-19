@@ -2,25 +2,23 @@ import "../../../App.css"
 import { TrainFileUpload } from "../../train/trainFileUpload";
 import { PredictFileUpload } from "../../predict/predictFileUpload"
 import { useAppSelector, useAppDispatch } from "../../../app/hooks"
-import { resetRegression, resetTrained} from "./regressionModelSlice";
-import { resetClassification } from "../model_classification/classificationModelSlice";
+import { resetModel, resetTrained } from "../modelsSlice";
 import { reset } from "../../predict/predictSlice";
 import { resetTrain } from "../../train/trainSlice";
 import type { RootState } from "../../../app/store"
 
 const RegressionModelApp = () => {
-  const trained = useAppSelector((state: RootState) => state.RegressionModel.trained);
+  const trained = useAppSelector((state: RootState) => state.models.regression.trained);
   const dispatch = useAppDispatch();
   
   const home = () => {
-    dispatch(resetRegression())
-    dispatch(resetClassification())
+    dispatch(resetModel("regression"))
     dispatch(reset())
     dispatch(resetTrain())
   }
 
   const resetTrainF = () => {
-    dispatch(resetTrained())
+    dispatch(resetTrained("regression"))
   }
 
   return (

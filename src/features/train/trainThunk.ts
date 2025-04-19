@@ -6,7 +6,7 @@ export const trainModel = createAsyncThunk<
   modelParams,
   { rejectValue: string }
 >(
-  'model/trainModel',
+  'trainModel',
   async ({url, file, targetColumn} , { rejectWithValue }) => {
     const formData = new FormData();
     formData.append('file', file);

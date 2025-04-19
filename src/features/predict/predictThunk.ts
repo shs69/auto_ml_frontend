@@ -6,7 +6,7 @@ export const predict = createAsyncThunk<
   modelParams,
   { rejectValue: string }
 >(
-  'model/predictModel',
+  'predictModel',
   async ({url, file} , { rejectWithValue }) => {
     const formData = new FormData();
     formData.append('file', file);

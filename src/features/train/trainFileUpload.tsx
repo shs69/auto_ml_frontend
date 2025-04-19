@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { trainModel } from './trainThunk';
-import { changeTargetColumn } from "../models/model_classification/classificationModelSlice";
+import { changeTargetColumn } from "../models/modelsSlice";
 import type { RootState } from '../../app/store';
 
 export const TrainFileUpload = () => {
@@ -9,7 +9,7 @@ export const TrainFileUpload = () => {
   const [targetColumn, setTargetColumn] = useState<string>('');
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector((state: RootState) => state.TrainFile);
-  const classification = useAppSelector((state: RootState) => state.ClassificationModel.choosed);
+  const choosedModelName = useAppSelector((state: RootState) => state.models.choosed);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -22,9 +22,9 @@ export const TrainFileUpload = () => {
       alert('Выберите файл и укажите целевую колонку')
       return;
     }
-    var url = (classification) ? new URL('http://localhost:8000/train_classification/') : new URL('http://localhost:8000/train_regression/')
-    dispatch(trainModel({url, file, targetColumn}))
-    dispatch(changeTargetColumn(targetColumn))
+    var url = (choosedModelName === "classification") ? new URL('http://localhost:8000/train_classification/') : new URL('http://localhost:8000/train_regression/')
+    dispatch(trainModel({modelName: choosedModelName, url, file, targetColumn}))
+    dispatch(changeTargetColumn({model: choosedModelName, value: targetColumn}))
   };
 
   return (
