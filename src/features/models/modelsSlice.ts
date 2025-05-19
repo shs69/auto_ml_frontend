@@ -46,8 +46,8 @@ export const modelsSlice = createSlice({
         setModelImageResnext: (state, action: PayloadAction<string>) => {
             state.resnext.image = action.payload
         },
-        setModelImageSegmentation: (state, action: PayloadAction<string>) => {
-            state.segmentation.image = action.payload
+        resetPredictions: (state, action: PayloadAction<models>) => {
+            state[action.payload].prediction = [];
         }
     },
     extraReducers: (builder) => {
@@ -62,4 +62,4 @@ export const modelsSlice = createSlice({
     }
 })
 
-export const { resetTrained, resetModel, changeTargetColumn, chooseModel, setModelImageResnext } = modelsSlice.actions;
+export const { resetTrained, resetModel, changeTargetColumn, chooseModel, setModelImageResnext, resetPredictions } = modelsSlice.actions;

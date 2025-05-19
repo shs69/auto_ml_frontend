@@ -9,7 +9,6 @@ import type { RootState } from '../../../app/store';
 const SegmentationModelApp = () => {
   const dispatch = useAppDispatch();  
   const prediction = useAppSelector((state: RootState) => state.models.segmentation.prediction)
-//   const image = useAppSelector((state: RootState) => state.models.segmentation.image)
 
   const home = () => {
     dispatch(resetModel("segmentation"))

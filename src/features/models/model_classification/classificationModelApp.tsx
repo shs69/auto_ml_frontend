@@ -1,7 +1,7 @@
 import "../../../App.css"
 import { TrainFileUpload } from "../../train/trainFileUpload";
 import { PredictFileUpload } from "../../predict/predictFileUpload"
-import { resetModel, resetTrained } from "../modelsSlice";
+import { resetModel, resetTrained, resetPredictions } from "../modelsSlice";
 import { reset } from "../../predict/predictSlice";
 import { resetTrain } from "../../train/trainSlice";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks"
@@ -14,12 +14,18 @@ const ClassificationModelApp = () => {
   
   const resetTrainF = () => {
     dispatch(resetTrained("classification"))
+    dispatch(reset())
   }
 
   const home = () => {
     dispatch(resetModel("classification"))
     dispatch(reset())
     dispatch(resetTrain())
+  }
+
+  const back = () => {
+   dispatch(resetPredictions("classification"))
+   dispatch(reset())
   }
 
 
@@ -38,6 +44,9 @@ const ClassificationModelApp = () => {
           {trained && <div className="button-home">
             <button onClick={resetTrainF} className="">
               Reset
+            </button> 
+            <button onClick={back} className="">
+              Back
             </button> 
           </div>}
         </div>

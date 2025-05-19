@@ -19,7 +19,15 @@ export const predict = createAsyncThunk<
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(errorText);
+        try {
+          const errorObject = JSON.parse(errorText)
+          if (errorObject && errorObject.detail) {
+            console.log(errorObject.detail)
+            return rejectWithValue(errorObject.detail)
+          }
+        } catch (parseError) {
+          throw new Error(errorText);
+        }
       }
 
       const data: modelResponse = await response.json();

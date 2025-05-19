@@ -23,16 +23,27 @@ export const trainModel = createAsyncThunk<
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(errorText);
+
+        try {
+          const errorObject = JSON.parse(errorText)
+          if (errorObject && errorObject.detail) {
+            console.log(errorObject.detail)
+            return rejectWithValue(errorObject.detail)
+          }
+        } catch (parseError) {
+          throw new Error(errorText);
+        }
+
       }
 
       const data: modelResponse = await response.json();
       return data;
     } catch (err: unknown) {
       if (err instanceof Error) {
+        console.log(err.message)
         return rejectWithValue(err.message);
       }
-      return rejectWithValue('Unknown error occurred during training.');
+      return rejectWithValue('Unknown error occurred during training');
     }
   }
 );

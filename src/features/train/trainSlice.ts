@@ -29,7 +29,7 @@ const trainFileSlice = createSlice({
       })
       .addCase(trainModel.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = 'Failed to upload file';
+        state.error = action.payload ?? 'Failed to upload file';
       });
   },
 });

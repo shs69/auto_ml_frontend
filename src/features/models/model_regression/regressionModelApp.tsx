@@ -2,7 +2,7 @@ import "../../../App.css"
 import { TrainFileUpload } from "../../train/trainFileUpload";
 import { PredictFileUpload } from "../../predict/predictFileUpload"
 import { useAppSelector, useAppDispatch } from "../../../app/hooks"
-import { resetModel, resetTrained } from "../modelsSlice";
+import { resetModel, resetTrained, resetPredictions } from "../modelsSlice";
 import { reset } from "../../predict/predictSlice";
 import { resetTrain } from "../../train/trainSlice";
 import type { RootState } from "../../../app/store"
@@ -19,6 +19,12 @@ const RegressionModelApp = () => {
 
   const resetTrainF = () => {
     dispatch(resetTrained("regression"))
+    dispatch(reset())
+  }
+
+  const back = () => {
+     dispatch(resetPredictions("regression"))
+     dispatch(reset())
   }
 
   return (
@@ -36,6 +42,9 @@ const RegressionModelApp = () => {
           {trained && <div className="button-home">
             <button onClick={resetTrainF} className="">
               Reset
+            </button> 
+            <button onClick={back} className="">
+              Back
             </button> 
           </div>}
         </div>

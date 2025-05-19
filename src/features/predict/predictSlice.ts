@@ -32,7 +32,7 @@ const predictFileSlice = createSlice({
         })
         .addCase(predict.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = 'Failed to upload file';
+        state.error = action.payload ?? 'Failed to upload file';
     });
     },
 })
